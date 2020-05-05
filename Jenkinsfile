@@ -4,33 +4,41 @@ pipeline {
     stages {
         stage('setup') {
             steps {
-                bat "echo %time%"
-                bat "ping 127.0.0.1 -n 3"
-                bat "echo %time%"
+                logstash {
+                    node {
+                        bat "ping 127.0.0.1 -n 3"
+                    }
+                }
             }
         }
 
         stage('build') {
             steps {
-                bat "echo %time%"
-                bat "ping 127.0.0.1 -n 3"
-                bat "echo %time%"
+                logstash {
+                    node {
+                        bat "ping 127.0.0.1 -n 3"
+                    }
+                }
             }
         }
 
         stage('test') {
             steps {
-                bat "echo %time%"
-                bat "ping 127.0.0.1 -n 3"
-                bat "echo %time%"
+                logstash {
+                    node {
+                        bat "ping 127.0.0.1 -n 3"
+                    }
+                }
             }
         }
 
         stage('deploy') {
             steps {
-                bat "echo %time%"
-                bat "ping 127.0.0.1 -n 3"
-                bat "echo %time%"
+                logstash {
+                    node {
+                        bat "ping 127.0.0.1 -n 3"
+                    }
+                }
             }
         }
     }
