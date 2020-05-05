@@ -8,6 +8,8 @@ Good support from Logz.io?
 Cons:
 Need to manually build and maintain the logstash-plugin. Logz.io forked the project to add logz.io support, but the plugin isn't up-to-date. The plugin is needed for build logs.
 
-Filebeat for system logs
+Filebeat for system logs.
 
-Seems like the build time is cummulative by build step. Each build step report the now total time of the build.
+The build time is cummulative by build step. Each build step report the now total time of the build.
+
+The plugins sends each build line as an individual log.
