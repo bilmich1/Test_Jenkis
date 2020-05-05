@@ -1,11 +1,15 @@
 pipeline {
     agent any
     
+    environment {
+        STAGE_DURATION = '5';
+    }
+
     stages {
         stage('setup') {
             steps {
                 logstash {
-                    bat "ping 127.0.0.1 -n 3"
+                    bat "ping 127.0.0.1 -n ${STAGE_DURATION}"
                 }
             }
         }
@@ -13,7 +17,7 @@ pipeline {
         stage('build') {
             steps {
                 logstash {
-                    bat "ping 127.0.0.1 -n 3"
+                    bat "ping 127.0.0.1 -n ${STAGE_DURATION}"
                 }
             }
         }
@@ -21,7 +25,7 @@ pipeline {
         stage('test') {
             steps {
                 logstash {
-                    bat "ping 127.0.0.1 -n 3"
+                    bat "ping 127.0.0.1 -n ${STAGE_DURATION}"
                 }
             }
         }
@@ -29,7 +33,7 @@ pipeline {
         stage('deploy') {
             steps {
                 logstash {
-                    bat "ping 127.0.0.1 -n 3"
+                    bat "ping 127.0.0.1 -n ${STAGE_DURATION}"
                 }
             }
         }
