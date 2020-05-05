@@ -33,9 +33,7 @@ pipeline {
 
     post {
         always {
-            logstash {
-                    bat "echo upload build log"
-            }
+            logstashSend failBuild: true, maxLines: 1000 
         }
     }
 }
