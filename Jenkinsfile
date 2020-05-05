@@ -5,9 +5,7 @@ pipeline {
         stage('setup') {
             steps {
                 logstash {
-                    node {
-                        bat "ping 127.0.0.1 -n 3"
-                    }
+                    bat "ping 127.0.0.1 -n 3"
                 }
             }
         }
@@ -15,9 +13,7 @@ pipeline {
         stage('build') {
             steps {
                 logstash {
-                    node {
-                        bat "ping 127.0.0.1 -n 3"
-                    }
+                    bat "ping 127.0.0.1 -n 3"
                 }
             }
         }
@@ -25,9 +21,7 @@ pipeline {
         stage('test') {
             steps {
                 logstash {
-                    node {
-                        bat "ping 127.0.0.1 -n 3"
-                    }
+                    bat "ping 127.0.0.1 -n 3"
                 }
             }
         }
@@ -35,9 +29,7 @@ pipeline {
         stage('deploy') {
             steps {
                 logstash {
-                    node {
-                        bat "ping 127.0.0.1 -n 3"
-                    }
+                    bat "ping 127.0.0.1 -n 3"
                 }
             }
         }

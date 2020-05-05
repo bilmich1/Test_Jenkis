@@ -1,0 +1,8 @@
+Based on: https://logz.io/blog/jenkins-build-monitoring/
+
+Pros:
+
+Cons:
+Need to manually build and maintain the logstash-plugin. Logz.io forked the project to add logz.io support, but the plugin isn't up-to-date.
+
+Need to use logstash-plugin, which had incomplete and awful documentation (like the rest of Jenkins).
