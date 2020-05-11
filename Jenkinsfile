@@ -1,6 +1,10 @@
 pipeline {
     agent any
     
+    options { 
+        timestamps()
+    }
+
     environment {
         STAGE_DURATION = '5';
     }
@@ -8,25 +12,29 @@ pipeline {
     stages {
         stage('setup') {
             steps {
-                    bat "ping 127.0.0.1 -n ${STAGE_DURATION}"
+                bat "echo before setup"
+                bat "ping 127.0.0.1 -n ${STAGE_DURATION}"
             }
         }
 
         stage('build') {
             steps {
-                    bat "ping 127.0.0.1 -n ${STAGE_DURATION}"
+                bat "echo before build"
+                bat "ping 127.0.0.1 -n ${STAGE_DURATION}"
             }
         }
 
         stage('test') {
             steps {
-                    bat "ping 127.0.0.1 -n ${STAGE_DURATION}"
+                bat "echo before test"
+                bat "ping 127.0.0.1 -n ${STAGE_DURATION}"
             }
         }
 
         stage('deploy') {
             steps {
-                    bat "ping 127.0.0.1 -n ${STAGE_DURATION}"
+                bat "echo before deploy"
+                bat "ping 127.0.0.1 -n ${STAGE_DURATION}"
             }
         }
     }
