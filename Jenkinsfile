@@ -13,13 +13,13 @@ pipeline {
         stage('setup') {
             steps {
                 logstash {
-                    bat "echo start stage setup"
+                    echo "start stage setup"
                 }
 
                 bat "ping 127.0.0.1 -n ${STAGE_DURATION}"
                 
                 logstash {
-                    bat "echo end stage setup"
+                    echo "end stage setup"
                 }
             }
         }
@@ -27,13 +27,13 @@ pipeline {
         stage('build') {
             steps {
                 logstash {
-                    bat "echo start stage build"
+                     echo "start stage build"
                 }
 
                 bat "ping 127.0.0.1 -n ${STAGE_DURATION}"
                 
                 logstash {
-                    bat "echo end stage build"
+                     echo "end stage build"
                 }
             }
         }
@@ -41,13 +41,13 @@ pipeline {
         stage('test') {
             steps {
                 logstash {
-                    bat "echo start stage test"
+                     echo "start stage test"
                 }
 
                 bat "ping 127.0.0.1 -n ${STAGE_DURATION}"
                 
                 logstash {
-                    bat "echo end stage test"
+                     echo "end stage test"
                 }
             }
         }
@@ -55,13 +55,13 @@ pipeline {
         stage('deploy') {
             steps {
                 logstash {
-                    bat "echo start stage deploy"
+                     echo "start stage deploy"
                 }
 
                 bat "ping 127.0.0.1 -n ${STAGE_DURATION}"
                 
                 logstash {
-                    bat "echo end stage deploy"
+                     echo "end stage deploy"
                 }
             }
         }
