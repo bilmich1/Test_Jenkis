@@ -66,4 +66,12 @@ pipeline {
             }
         }
     }
+
+    post {
+        always {
+            logstash {
+                echo "end of build"
+            }
+        }
+    }
 }
