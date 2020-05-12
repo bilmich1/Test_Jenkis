@@ -16,7 +16,7 @@ pipeline {
                     echo "start stage setup"
                 }
 
-                bat "ping 127.0.0.1 -n 5"
+                bat "ping 127.0.0.1 -n 2"
                 
                 logstash {
                     echo "end stage setup"
@@ -30,7 +30,7 @@ pipeline {
                      echo "start stage build"
                 }
 
-                bat "ping 127.0.0.1 -n 7"
+                bat "ping 127.0.0.1 -n 5"
                 
                 logstash {
                      echo "end stage build"
@@ -44,7 +44,7 @@ pipeline {
                      echo "start stage test"
                 }
 
-                bat "ping 127.0.0.1 -n 7"
+                bat "ping 127.0.0.1 -n 10"
                 
                 logstash {
                      echo "end stage test"
@@ -58,7 +58,7 @@ pipeline {
                      echo "start stage deploy"
                 }
 
-                bat "ping 127.0.0.1 -n 3"
+                bat "ping 127.0.0.1 -n 5"
                 
                 logstash {
                      echo "end stage deploy"
