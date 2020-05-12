@@ -30,9 +30,13 @@ We only have the total build time, and not the stages build time went using `log
 ## [Jenkins Job and Stage Monitoring plugin + graphana](https://plugins.jenkins.io/github-autostatus/)
 
 Pros:
-Very simple to setup visualization  
+Very simple to setup visualization
+
+Should support Global build time, stages build time, test reporting (coverage/Test Cases/etc...)
+
 Could allow us to see the stage build time in Github
 
 Cons:
 Unless we fork and modify the plugin ourselves, we can't control which data is save to the database
+
 Only report declared staged (Checkout + Post Actions aren't reported)
