@@ -35,3 +35,4 @@ Could allow us to see the stage build time in Github
 
 Cons:
 Unless we fork and modify the plugin ourselves, we can't control which data is save to the database
+Only report declared staged (Checkout + Post Actions aren't reported)
