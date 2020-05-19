@@ -30,7 +30,7 @@ pipeline {
                      echo "start stage build"
                 }
 
-                bat "ping 127.0.0.1 -n 11"
+                bat "ping 127.0.0.1 -n 10"
                 
                 logstash {
                      echo "end stage build"
