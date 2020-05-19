@@ -1,42 +1,42 @@
-## Logz.io
+## ci-tools Logstash
 
-Ressources:  
-https://logz.io/blog/jenkins-build-monitoring/  
-https://docs.logz.io/shipping/log-sources/jenkins.html  
+Implement logstash logging directly inside ci-tools.
 
-Pros:  
-Good support from Logz.io?
+**Pros:**  
+1. We have complete control of what we log and the format
+2. We are independant of any build system we use (jenkins, github actions, gitlab)
 
-Cons:  
-Need to manually build and maintain the logstash-plugin. Logz.io forked the project to add logz.io support, but the plugin isn't up-to-date. The plugin is needed for build logs.
+**Cons:**  
+1. 100% our responsability to implement and maintain (time consuming)
+2. Being independant from the build system means we don't have any information about it
+   1. ci-tools doesn't know about Jenkins stages
+   2. it doesn't know anything before or after it's own execution (i.e. check out time, build monitoring vs build *machine* monitoring)
 
-Filebeat for system logs.
+## [Jenkins Logstash plugin](https://plugins.jenkins.io/logstash/)
 
+**Pros:**  
+1. Allows us to easily control the information sent to the stash using the `logstash` step
+2. Can output the complete build output using `logstashSend` step as a post action
 
-## [Jenkins logstash plugin](https://plugins.jenkins.io/logstash/)
+**Cons:**  
+1. The plugins sends each output line as an individual log (a single command with a multi-line output will generate multiple log entry)
+2. We don't control the fields sent unless we modify the plugin (open source, so we could fork it)
+  1. The build time is cummulative for all log entry, so if we want the build time of a single stage, we need to work around that limitation (might require complex Kibana query)
+  2. The more we go outside what it offers, the more work we need to do
+3. Jenkins specific
 
-Pros:  
-Very versatile, could allow us to easily add information to the stash
+[Basic Kibana example](ELK_build_time.png)
 
-Cons:  
-The plugins sends each build line as an individual log.
+## [Jenkins Job and Stage Monitoring plugin + Graphana](https://plugins.jenkins.io/github-autostatus/)
 
-Needs to indiviually wrap the information we want in an easily tokenizable log entry.
+**Pros:**  
+1. Very simple to setup visualization (the plugin output to an InfluxDB and Graphana queries from it)
+2. Supports Global build time, stages build time and test reporting (coverage/Test Cases/etc...) out of the box (the latter one has not been tested)
+3. Could allow us to see the stages in Github
 
-The build time is cummulative by build step. Each build step report the now total time of the build.
-We only have the total build time, and not the stages build time went using `logstashSend` as a post action.
+**Cons:**  
+1. Unless we fork and modify the plugin ourselves, we can't control which data is save to the database
+2. Only report declared staged (Checkout + Post Actions aren't reported)
+3. Jenkins specific
 
-
-## [Jenkins Job and Stage Monitoring plugin + graphana](https://plugins.jenkins.io/github-autostatus/)
-
-Pros:
-Very simple to setup visualization
-
-Should support Global build time, stages build time, test reporting (coverage/Test Cases/etc...)
-
-Could allow us to see the stage build time in Github
-
-Cons:
-Unless we fork and modify the plugin ourselves, we can't control which data is save to the database
-
-Only report declared staged (Checkout + Post Actions aren't reported)
+[Basic Graphana example](Graphana_build_time.png)
